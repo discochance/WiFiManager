@@ -41,7 +41,7 @@ const char HTTP_END[] PROGMEM             = "</div></body></html>";
 
 class WiFiManagerParameter {
   public:
-    /** 
+    /**
         Create custom parameters that can be added to the WiFiManager setup web page
         @id is used for HTTP queries and must not contain spaces nor other special characters
     */
@@ -83,6 +83,9 @@ class WiFiManager
 
     // get the AP name of the config portal, so it can be used in the callback
     String        getConfigPortalSSID();
+
+    void          startConfigPortal_async(char const *apName, char const *apPassword);
+    bool          connectUpdater();
 
     void          resetSettings();
 
