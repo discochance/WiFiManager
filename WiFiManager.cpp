@@ -273,6 +273,14 @@ boolean  WiFiManager::startConfigPortal(char const *apName, char const *apPasswo
 
 void  WiFiManager::startConfigPortal_async(char const *apName, char const *apPassword) {
 
+  if (connectWifi("", "") == WL_CONNECTED)   {
+    DEBUG_WM(F("IP Address:"));
+    DEBUG_WM(WiFi.localIP());
+    //connected
+    return;
+  }
+
+
   if(!WiFi.isConnected()){
     WiFi.persistent(false);
     // disconnect sta, start ap
