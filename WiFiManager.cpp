@@ -344,11 +344,17 @@ bool WiFiManager::connectUpdater() {
 
   // When we finally exited the main loop... tell whether we're connected
   if (break_v){
+    DEBUG_WM(F("Received break in loop"));
     server.reset();
     dnsServer.reset();
+    if (WiFi.status() == WL_CONNECTED) DEBUG_WM(F("WiFi is Connected"));
     return WiFi.status() == WL_CONNECTED;
   }
   return false;
+}
+
+bool WiFiManager::isConnected(){
+    return WiFi.status() == WL_CONNECTED;
 }
 
 int WiFiManager::connectWifi(String ssid, String pass) {

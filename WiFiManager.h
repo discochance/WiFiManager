@@ -86,6 +86,7 @@ class WiFiManager
 
     void          startConfigPortal_async(char const *apName, char const *apPassword);
     bool          connectUpdater();
+    bool          isConnected();
 
     void          resetSettings();
 
